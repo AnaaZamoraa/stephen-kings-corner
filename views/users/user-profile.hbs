@@ -1,0 +1,89 @@
+<div class="background-image">
+  <img src="https://res.cloudinary.com/dv7nx2bxb/image/upload/v1711304109/project-backend/sq5ph51deaenokaohgar.png" class="img" alt="it image">
+</div>
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-lg-6">
+      <div class="card bg-transparent border-transparent text-white mb-3">
+        <div class="row g-0">
+          <div class="col-md-4 d-flex align-items-center justify-content-center">
+            <img src="{{user.profileImg}}" class="img-fluid rounded-start" alt="{{user.profileImg}}">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">Welcome {{user.username}}'s profile</h5>
+              <p class="card-text">Email: {{user.email}}</p>
+              <p class="card-text">Favorite book: {{user.favoriteBook}}</p>
+              <p class="card-text">A little about myself: {{user.description}}</p>
+              {{#if isOwner}}
+              <div class="references">
+                <a href="/users/{{user._id}}/edit" class="btn btn-danger">Edit profile</a>
+              </div>
+              {{/if}}
+              {{#if canEditOrDelete}}
+              {{#unless isOwner}}
+              <div class="references">
+                <a href="/users/{{user._id}}/edit" class="btn btn-danger">Edit profile</a>
+              </div>
+              {{/unless}}
+              <div class="references">
+                <form action="/users/{{user._id}}/delete" method="post">
+                  <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+              </div>
+              {{/if}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container favorite">
+  <h3 class="title">Favorite books</h3>
+    <div class="row row-cols-1 row-cols-md-4">
+        {{#each favBooks}}
+            <div class="col">
+                <div class="card bg-transparent border-white text-white">
+                    <div class="card-body">
+                        <h5 class="card-title">{{Title}}</h5>
+                        <p class="card-text">{{Year}}</p>
+                        <a class="btn bg-transparent border-white text-white" type="button" href="/books/details/{{id}}">Check it</a>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div>
+<div class="container favorite">
+  <h3 class="title">Favorite villains</h3>
+    <div class="row row-cols-1 row-cols-md-4">
+        {{#each favVillains}}
+            <div class="col">
+                <div class="card bg-transparent border-white text-white">
+                    <div class="card-body">
+                        <h5 class="card-title">{{name}}</h5>
+                        <p class="card-text">{{status}}</p>
+                        <a class="btn bg-transparent border-white text-white" type="button" href="/villains/details/{{id}}">Check it</a>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div>
+<div class="container favorite">
+  <h3 class="title">Favorite shorts</h3>
+    <div class="row row-cols-1 row-cols-md-4">
+        {{#each favShorts}}
+            <div class="col">
+                <div class="card bg-transparent border-white text-white">
+                    <div class="card-body">
+                        <h5 class="card-title">{{title}}</h5>
+                        <p class="card-text">{{type}}</p>
+                        <a class="btn bg-transparent border-white text-white" type="button" href="/shorts/details/{{id}}">Check it</a>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div>

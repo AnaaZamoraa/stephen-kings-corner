@@ -1,0 +1,49 @@
+<div class="background-image">
+  <img src="https://res.cloudinary.com/dv7nx2bxb/image/upload/v1708460341/project-backend/z2uhlzodzpicm07zib8y.jpg" class="img" alt="it image">
+</div>
+
+<div class="container">
+  <div class="row justify-content-center mb-3">
+    <h1>Edit your profile</h1>
+  </div>
+  <div class="row justify-content-center">
+    <form action="/users/{{details.id}}/edit" method="POST" enctype="multipart/form-data">
+      <div class="mb-3 row">
+        <div class="col">
+          <label for="emailInput" class="form-label">Email</label>
+          <input type="email" class="form-control" id="emailInput" name="email" value="{{details.email}}">
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="usernameInput" class="form-label">Username</label>
+        <input type="text" class="form-control" id="usernameInput" name="username" value="{{details.username}}">
+      </div>
+
+      <div class="mb-3">
+        <label for="favoriteBookInput" class="form-label">Favorite Stephen King book</label>
+        <textarea class="form-control" id="favoriteBookInput" rows="3" name="favoriteBook">{{details.favoriteBook}}</textarea>
+      </div>
+
+      <div class="mb-3">
+        <label for="descriptionInput" class="form-label">Description</label>
+        <textarea class="form-control" id="descriptionInput" rows="3" name="description">{{details.description}}</textarea>
+      </div>
+
+      <div class="mb-3">
+        <label for="formFile" class="form-label">Image</label>
+        <input type="file" class="form-control" id="formFile" name="profileImg">
+      </div>
+
+      <div class="mb-3 justify-content-center">
+        <button type="submit" class="btn btn-danger">Update user</button>
+      </div>
+
+      {{#if errorMessage}}
+      <div id="errorMessage" class="mb-3">
+        <p>{{errorMessage}}</p>
+      </div>
+      {{/if}}
+    </form>
+  </div>
+</div>

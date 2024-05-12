@@ -1,0 +1,49 @@
+body {
+  padding-top: 55px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.btn {
+  margin-bottom: 1rem;
+}
+.navbar {
+  padding-right: 2.5rem;
+
+}
+.title{
+  color: white;
+}
+.favorite { 
+  padding-bottom: 2rem;
+}
+.background-image {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 55%;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+h1 {
+  padding-top: 25px;
+}
+.content {
+  padding-top: 5rem;
+}
+footer {
+  height: 25px;
+  background-color: rgb(237, 47, 47);
+  color: white;
+  display: flex;
+  align-items: center;
+}
+.list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+}

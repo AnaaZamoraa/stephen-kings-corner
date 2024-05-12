@@ -1,0 +1,44 @@
+<div class="background-image">
+  <img src="https://res.cloudinary.com/dv7nx2bxb/image/upload/v1710171808/project-backend/erzjtq8s7qjjztnovaen.png" class="img" alt="it image">
+</div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="my-3">
+                <div class="card text-center border-danger mb-3">
+                    <div class="card-body text-danger">
+                        <h5 class="card-title"><strong>{{details.name}}</strong></h5>
+                        <p class="card-text"><strong>Gender:</strong> {{details.gender}}</p>
+                        <p class="card-text"><strong>Status:</strong> {{details.status}}</p>
+                        <p class="card-text"><strong>Notes about the villain:</strong> {{details.notes}}</p>
+                        <div class="dropdown-center">
+                            <button class="btn btn-outline-danger dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                From the book:
+                            </button>
+                            {{#each details.books}}
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/books/details/{{id}}">{{title}}</a></li>
+                            </ul>
+                            {{/each}}
+                        </div>
+                        <a class="btn btn-danger" href="/villains/1">Check all villains</a>
+                        {{#if currentUser}}
+                            <div class="row justify-content-around mt-3">
+                                <div class="col-md-auto">
+                                    <form action="/villains/{{details._id}}/add-favorite" method="POST">
+                                        <input type="submit" value="Add favorite" class="btn btn-outline-success btn-sm">
+                                    </form>
+                                </div>
+                                <div class="col-md-auto">
+                                    <form action="/villains/{{details._id}}/quit-favorite" method="POST">
+                                        <input type="submit" value="Quit favorites" class="btn btn-outline-danger btn-sm">
+                                    </form>
+                                </div>
+                            </div>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

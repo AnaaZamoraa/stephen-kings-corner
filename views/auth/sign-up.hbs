@@ -1,0 +1,42 @@
+<div class="background-image">
+  <img src="https://res.cloudinary.com/dv7nx2bxb/image/upload/v1708460341/project-backend/z2uhlzodzpicm07zib8y.jpg" class="img" alt="it image">
+</div>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="d-flex flex-row mb-3 justify-content-center">
+        <h1>Signup</h1>
+      </div>
+      <div class="d-flex justify-content-center">
+        <form action="/signup" method="POST" enctype="multipart/form-data">
+          <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="username" class="form-control" id="username" name="username" placeholder="ironhacker">
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="ironhacker@gmail.com">
+          </div>
+          <div class="mb-3">
+            <label for="favoriteBook" class="form-label">What's your favorite Stephen King's Book</label>
+            <input type="text" class="form-control" id="favoriteBook" name="favoriteBook" placeholder="It">
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Describe yourself</label>
+            <input type="text" class="form-control" id="description" name="description">
+          </div>
+          <div class="mb-3">
+            <label for="formFile" class="form-label">Image</label>
+            <input type="file" class="form-control-file" id="formFile" name="profileImg">
+            <div class="form-text">Introduce the URL of the image you'd like as your profile</div>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="********">
+          </div>
+          <button type="submit" class="btn btn-danger">Create account</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

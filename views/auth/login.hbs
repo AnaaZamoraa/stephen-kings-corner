@@ -1,0 +1,28 @@
+<div class="background-image">
+  <img src="https://res.cloudinary.com/dv7nx2bxb/image/upload/v1708460707/project-backend/nnywxgrksshmraa8vf7h.jpg" class="img" alt="it image">
+</div>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="d-flex flex-row mb-3 justify-content-center">
+        <h1>Login</h1>
+      </div>
+      <div class="d-flex justify-content-center">
+        <form action="/login" method="POST">
+          <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="username" class="form-control" id="username" name="username" placeholder="ironhacker">
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="********">
+          </div>
+          <button type="submit" class="btn btn-dark">Login</button>
+          {{#if errorMessage}}
+          <p class="error">{{errorMessage}}</p>
+          {{/if}}
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

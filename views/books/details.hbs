@@ -1,0 +1,49 @@
+<div class="background-image">
+  <img src="https://res.cloudinary.com/dv7nx2bxb/image/upload/v1710177633/project-backend/cu80qdtexl2r52ghupa9.png" class="img" alt="it image">
+</div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8 col-sm-10">
+            <div class="my-3">
+                <div class="card text-center border-danger mb-3">    
+                    <div class="card-body text-danger">
+                        <h5 class="card-title"><strong>{{details.Title}}</strong></h5>
+                        <p class="card-text"><strong>Year of publication:</strong> {{details.Year}}</p>
+                        <p class="card-text"><strong>Number of pages:</strong> {{details.Pages}}</p>
+                        <p class="card-text"><strong>ISBN:</strong> {{details.ISBN}}</p>
+                        <p class="card-text"><strong>Publisher:</strong> {{details.Publisher}}</p>
+                        <p class="card-text"><strong>Notes about the book:</strong> {{details.Notes}}</p>
+                        <div class="dropdown-center">
+                            <button class="btn btn-outline-danger dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Villains
+                            </button>
+                            {{#each details.villains}}
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/villains/details/{{id}}">{{name}}</a></li>
+                            </ul>
+                            {{/each}}
+                        </div>
+                        <a class="btn btn-danger" href="/books/1">Check all books</a>
+                        {{#if currentUser}}
+                                <div class="row justify-content-around">
+                                    <div class="col-lg-3 col-md-4 col-sm-6 m-1">
+                                        <form action="/books/{{details._id}}/add-favorite" method="POST">
+                                            <input type="submit" value="Add favorite"
+                                                class="btn btn-outline-success btn-sm">
+                                        </form>
+                                    </div>
+                                    <div class="col-lg-3 col-md-4 col-sm-6 m-1">
+                                        <form action="/books/{{details._id}}/quit-favorite" method="POST">
+                                            <input type="submit" value="Quit favorites"
+                                                class="btn btn-outline-danger btn-sm">
+                                        </form>
+                                    </div>
+                                </div>
+                        {{/if}}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

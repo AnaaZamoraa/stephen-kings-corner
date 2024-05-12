@@ -1,0 +1,61 @@
+<div class="background-image">
+  <img src="https://res.cloudinary.com/dv7nx2bxb/image/upload/v1710163344/project-backend/vttyh6cgwaj111dg2kjl.jpg" class="img" alt="it image">
+</div>
+
+<div class="container">
+  <div class="content">
+    <h2 class="villains-title">Here's a list of all Stephen King's villains</h2>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+      {{#each villains}}
+      <div class="col mb-3">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title"><a href="/villains/details/{{id}}"><strong>{{name}}</strong></a></h4>
+            <p class="card-text">Gender: {{gender}}</p>
+            <p class="card-text">Status: {{status}}</p>
+            <div class="dropdown">
+              <button class="btn btn-outline-danger dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                From the book:
+              </button>
+              <ul class="dropdown-menu">
+                {{#each books}}
+                <li><a class="dropdown-item" href="/books/details/{{id}}">{{title}}</a></li>
+                {{/each}}
+              </ul>
+            </div>
+            <a class="btn btn-danger" href="/villains/details/{{id}}">Learn more about this villain</a>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      {{#if previousPage}}
+      <li class="page-item">
+        <a href="/villains/{{previousPage}}" class="page-link">Previous</a>
+      </li>
+      {{else}}
+      <li class="page-item disabled">
+        <span class="page-link">Previous</span>
+      </li>
+      {{/if}}
+      {{#each totalPages}}
+      <li class="page-item {{#if this.isActive}}active{{/if}}">
+        <a class="page-link" href="/villains/{{this.page}}">{{this.page}}</a>
+      </li>
+      {{/each}}
+      {{#if nextPage}}
+      <li class="page-item">
+        <a class="page-link" href="/villains/{{nextPage}}">Next</a>
+      </li>
+      {{else}}
+      <li class="page-item disabled">
+        <span class="page-link">Next</span>
+      </li>
+      {{/if}}
+    </ul>
+  </nav>
+</div>

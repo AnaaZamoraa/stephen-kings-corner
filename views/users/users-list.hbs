@@ -1,0 +1,19 @@
+<div class="background-image">
+  <img src="https://res.cloudinary.com/dv7nx2bxb/image/upload/v1710420303/project-backend/wpbwhhmmf7tinryur9p8.jpg" class="img" alt="it image">
+</div>
+
+<div class="container content">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4">
+    {{#each users}}
+    <div class="col">
+      <div class="card mb-3">
+        <img src="{{profileImg}}" class="card-img-top" alt="{{username}}">
+        <div class="card-body">
+          <h5 class="card-title">{{username}}</h5>
+          <a href="/users/{{id}}" class="btn btn-danger">More details</a>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div>
