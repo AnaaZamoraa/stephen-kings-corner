@@ -13,26 +13,61 @@ router.get("/signup", (req, res, next) => {
     res.render("auth/sign-up");
 });
 
-router.post('/signup', fileUploader.single('profileImg'),(req, res, next) => {
+router.post('/signup', fileUploader.single('profileImg'), (req, res, next) => {
     const { username, email, favoriteBook, description, password } = req.body;
-    let profileImg = req.file?.path
-  bcryptjs
-    .genSalt(saltRounds)
-    .then(salt => bcryptjs.hash(password, salt))
-    .then(hashedPassword => {
-        return User.create({
-            username,
-            email,
-            favoriteBook,
-            description,
-            profileImg,
-            password: hashedPassword
-        });
+    let profileImg = req.file?.path;
+
+    User.findOne({ username })
+        .then(existingUser => {
+            if (existingUser) {
+                return res.status(400).render("auth/sign-up", {
+                    errorMessage: "Username already exists. Please choose another one."
+                });
+            }
+
+            return User.findOne({ email });
+        })
+        .then(existingEmail => {
+            if (existingEmail) {
+                return res.status(400).render("auth/sign-up", {
+                    errorMessage: "Email already exists. Please use another email."
+                });
+            }
+
+            return bcryptjs.genSalt(saltRounds);
+        })
+        .then(salt => bcryptjs.hash(password, salt))
+        .then(hashedPassword => {
+            return User.create({
+                username,
+                email,
+                favoriteBook,
+                description,
+                profileImg,
+                password: hashedPassword
+            });
         })
         .then(userFromDB => {
             res.redirect('/login');
         })
-    .catch(error => next(error));
+        .catch(error => {
+            if (error.code === 11000) {
+                let errorMessage = "Something went wrong. Please try again.";
+                if (error.keyPattern.username) {
+                    errorMessage = "Username already exists. Please choose another one.";
+                } else if (error.keyPattern.email) {
+                    errorMessage = "Email already exists. Please use another email.";
+                }
+                return res.status(400).render("auth/sign-up", {
+                    errorMessage
+                });
+            } else {
+                console.error("Error during sign up:", error);
+                return res.status(500).render("auth/sign-up", {
+                    errorMessage: "Something went wrong. Please try again later."
+                });
+            }
+        });
 });
 
 // Login

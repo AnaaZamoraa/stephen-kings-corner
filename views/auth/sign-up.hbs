@@ -8,18 +8,24 @@
         <h1>Signup</h1>
       </div>
       <div class="d-flex justify-content-center">
+          {{#if errorMessage}}
+            <div class="error">{{errorMessage}}</div>
+          {{/if}}
+      </div>
+      <br>
+      <div class="d-flex justify-content-center">
         <form action="/signup" method="POST" enctype="multipart/form-data">
           <div class="mb-3">
             <label for="username" class="form-label">Username</label>
-            <input type="username" class="form-control" id="username" name="username" placeholder="ironhacker">
+            <input type="username" class="form-control" id="username" name="username" placeholder="example">
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="ironhacker@gmail.com">
+            <input type="email" class="form-control" id="email" name="email" placeholder="example@gmail.com">
           </div>
           <div class="mb-3">
             <label for="favoriteBook" class="form-label">What's your favorite Stephen King's Book</label>
-            <input type="text" class="form-control" id="favoriteBook" name="favoriteBook" placeholder="It">
+            <input type="text" class="form-control" id="favoriteBook" name="favoriteBook" placeholder="The shinning">
           </div>
           <div class="mb-3">
             <label for="description" class="form-label">Describe yourself</label>
@@ -28,7 +34,7 @@
           <div class="mb-3">
             <label for="formFile" class="form-label">Image</label>
             <input type="file" class="form-control-file" id="formFile" name="profileImg">
-            <div class="form-text">Introduce the URL of the image you'd like as your profile</div>
+            <div class="form-text"></div>
           </div>
           <div class="mb-3">
             <label for="password" class="form-label">Password</label>
